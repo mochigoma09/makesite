@@ -315,7 +315,16 @@
 
                 // --- Step 4: README.mdの作成とPush ---
                 statusDiv.innerHTML = "⏳ 4/5: README.md (説明書) を作成中...";
-                const readmeText = `# ${repoName}\n\nAIによって自動生成されたWebサイトです。\n\n## 🌐 公開URL (GitHub Pages)\n[${pagesUrl}](${pagesUrl})\n`;
+                const readmeText = `# ${repoName}
+
+                AIによって自動生成されたWebサイトです。
+
+                ## 🌐 公開URL (GitHub Pages)
+                ${pagesUrl}
+
+                ## 📝 生成時の要望（プロンプト）
+                > ${promptText}
+                `;
                 const encodedReadmeContent = btoa(unescape(encodeURIComponent(readmeText)));
                 await fetch(`https://api.github.com/repos/${owner}/${repoName}/contents/README.md`, {
                     method: 'PUT',
